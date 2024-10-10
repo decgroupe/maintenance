@@ -79,7 +79,7 @@
                 <field name="maintenance_kind_id" />
             </field>
             <!-- TODO: Use position="move" instead -->
-            <xpath expr="//notebook/page[@name='description_page']" position="before">
+            <xpath expr="//notebook/page[@name='description_page']" position="after">
                     <page string="Instructions">
                         <field
                         name="note"
