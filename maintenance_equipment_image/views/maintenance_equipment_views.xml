@@ -19,17 +19,34 @@
         <field name="model">maintenance.equipment</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_kanban" />
         <field name="arch" type="xml">
-            <field name="activity_state" position="after">
-                <field name="id" />
-            </field>
-            <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="before">
-                <div class="o_kanban_image mr-1">
-                    <img
-                        t-att-src="kanban_image('maintenance.equipment', 'image_128', record.id.raw_value)"
-                        alt="Equipment"
-                        class="o_image_64_contain"
+            <xpath expr="//t[@t-name='card']" position="attributes">
+                <attribute name="class">flex-row</attribute>
+            </xpath>
+            <xpath expr="//t[@t-name='card']" position="inside">
+                <aside class="o_kanban_aside_full">
+                    <field
+                        name="image_128"
+                        options="{
+                            'placeholder': '/base/static/img/company_image.png',
+                            'size': [100, 100],
+                            'img_class': 'object-fit-cover'
+                        }"
+                        widget="image"
                     />
-                </div>
+                </aside>
+                <main class="ps-2 ms-1" />
+            </xpath>
+            <!-- Manually move each child since Odoo is not able to do it -->
+            <xpath expr="//main" position="inside">
+                <xpath
+                    expr="//t[@t-name='card']/div/field[@name='name']/parent::div"
+                    position="move"
+                />
+                <xpath
+                    expr="//t[@t-name='card']/field[@name='serial_no']"
+                    position="move"
+                />
+                <xpath expr="//t[@t-name='card']/footer" position="move" />
             </xpath>
         </field>
     </record>
