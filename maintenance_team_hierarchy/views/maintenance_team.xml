@@ -2,8 +2,21 @@
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <record id="maintenance_team_view_tree" model="ir.ui.view">
+        <field name="name">maintenance.team.list@maintenance_team_hierarchy</field>
+        <field name="model">maintenance.team</field>
+        <field name="inherit_id" ref="maintenance.maintenance_team_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="open_form_view">True</attribute>
+            </xpath>
+            <field name="member_ids" position="after">
+                <field name="parent_id" />
+            </field>
+        </field>
+    </record>
     <record model="ir.ui.view" id="maintenance_team_form_view">
-        <field name="name">maintenance.team.form (in maintenance_team_hierarchy)</field>
+        <field name="name">maintenance.team.form@maintenance_team_hierarchy</field>
         <field name="model">maintenance.team</field>
         <field name="inherit_id" ref="maintenance.maintenance_team_view_form" />
         <field name="arch" type="xml">
@@ -13,9 +26,7 @@
         </field>
     </record>
     <record model="ir.ui.view" id="maintenance_request_search_view">
-        <field
-            name="name"
-        >maintenance.request.search (in maintenance_team_hierarchy)</field>
+        <field name="name">maintenance.request.search@maintenance_team_hierarchy</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search" />
         <field name="arch" type="xml">
