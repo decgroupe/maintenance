@@ -13,6 +13,10 @@
                                 string="Scrapping equipment"
                             />
                             <field name="scrap_date" default_focus="1" />
+                            <field
+                                name="template_id"
+                                domain="[('model','=','maintenance.equipment')]"
+                            />
                         </group>
                     </group>
                 </sheet>
