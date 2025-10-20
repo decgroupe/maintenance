@@ -3,7 +3,7 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record model="ir.ui.view" id="maintenance_location_form_view">
-        <field name="name">maintenance.location.form (in cb_maintenance)</field>
+        <field name="name">maintenance.location.form@maintenance_location</field>
         <field name="model">maintenance.location</field>
         <field name="arch" type="xml">
             <form class="oe_form_configuration">
@@ -28,7 +28,7 @@
         </field>
     </record>
     <record model="ir.ui.view" id="maintenance_location_search_view">
-        <field name="name">maintenance.location.search (in cb_maintenance)</field>
+        <field name="name">maintenance.location.search@maintenance_location</field>
         <field name="model">maintenance.location</field>
         <field name="arch" type="xml">
             <search>
@@ -37,18 +37,18 @@
         </field>
     </record>
     <record model="ir.ui.view" id="maintenance_location_tree_view">
-        <field name="name">maintenance.location.tree (in cb_maintenance)</field>
+        <field name="name">maintenance.location.tree@maintenance_location</field>
         <field name="model">maintenance.location</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="complete_name" />
-            </tree>
+            </list>
         </field>
     </record>
     <record model="ir.actions.act_window" id="maintenance_location_act_window">
         <field name="name">Maintenance Location</field>
         <field name="res_model">maintenance.location</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
