@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="hr_equipment_view_form" model="ir.ui.view">
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <field
+                    name="image_1920"
+                    widget="image"
+                    class="oe_avatar"
+                    options='{"preview_image": "image_128"}'
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_equipment_view_kanban" model="ir.ui.view">
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//t[@t-name='card']" position="attributes">
+                <attribute name="class">flex-row</attribute>
+            </xpath>
+            <xpath expr="//t[@t-name='card']" position="inside">
+                <aside class="o_kanban_aside_full">
+                    <field
+                        name="image_128"
+                        options="{
+                            'placeholder': '/base/static/img/company_image.png',
+                            'size': [100, 100],
+                            'img_class': 'object-fit-cover'
+                        }"
+                        widget="image"
+                    />
+                </aside>
+                <main class="ps-2 ms-1" />
+            </xpath>
+            <!-- Manually move each child since Odoo is not able to do it -->
+            <xpath expr="//main" position="inside">
+                <xpath
+                    expr="//t[@t-name='card']/div/field[@name='name']/parent::div"
+                    position="move"
+                />
+                <xpath
+                    expr="//t[@t-name='card']/field[@name='serial_no']"
+                    position="move"
+                />
+                <xpath expr="//t[@t-name='card']/footer" position="move" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
